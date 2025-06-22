@@ -1,0 +1,48 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.cta_banner {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: $text-primary;
+
+  h1 {
+    font-family: $font-sans;
+    margin: 10px 0;
+    font-weight: 300;
+    font-size: 2.8rem;
+    text-align: center;
+    font-style: italic;
+  }
+
+  p {
+    text-transform: uppercase;
+    color: $icon-tint;
+    text-align: center;
+    font-style: italic;
+    font-size: 1rem;
+    font-family: $font-mono;
+    margin: 10px 0;
+  }
+}
+
+.cta_button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-family: $font-mono;
+  text-transform: uppercase; // use your theme color
+  border: 1px solid $accent-yellow;
+  background-color: transparent;
+  color: $accent-yellow;
+
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $accent-yellow;
+    color: $bg-primary;
+  }
+}

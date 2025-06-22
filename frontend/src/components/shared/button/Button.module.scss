@@ -1,0 +1,18 @@
+@import "../../../styles/variables";
+@import "../../../styles/_mixins.scss";
+
+.button {
+  background: $accent-yellow;
+  color: black;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: $radius-md;
+  cursor: pointer;
+  @include button-hover();
+}
+
+.secondary {
+  background: transparent;
+  color: $accent-yellow;
+  border: 1px solid $accent-yellow;
+}

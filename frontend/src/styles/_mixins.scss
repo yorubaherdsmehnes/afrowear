@@ -1,0 +1,30 @@
+@mixin transition($type: $transition-base) {
+  transition: #{$type};
+}
+
+@mixin hover-lift {
+  @include transition(transform 0.2s ease);
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+@mixin button-hover($color: $accent-yellow) {
+  border-color: $color;
+  color: $color;
+  @include transition();
+  &:hover {
+    background-color: $color;
+    color: black;
+  }
+}
+
+@mixin fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  // @include transition(opacity 0.4s ease, transform 0.4s ease);
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

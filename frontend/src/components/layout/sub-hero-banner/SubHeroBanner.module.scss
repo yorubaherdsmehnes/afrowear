@@ -1,0 +1,134 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.hero {
+  width: 100%;
+  height: calc(50vh + 80px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+.heroTextHolder{
+  position: absolute;
+  height: calc(50vh + 80px);
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  top: 0;
+}
+.heroText {
+  position: initial;
+  height: initial;
+  color: $accent-yellow;
+  opacity: 0.8;
+  font-size: clamp(17rem, 40vw, 50rem);
+  font-family: $font-graffitti;
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 1rem;
+}
+
+.typewriter {
+  font-family: $font-graffitti;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 2.8rem;
+  white-space: nowrap;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.typewriter::after {
+  color: $accent-yellow;
+  content: "|";
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.heroSubtitle {
+  font-size: 1rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 3.2s;
+  opacity: 0;
+}
+
+.heroButtons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.heroButtons button {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid $accent-yellow;
+  background: transparent;
+  color: $accent-yellow;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.heroButtons button:hover {
+  background: $accent-yellow;
+  color: black;
+}
+
+.scrollIndicator {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  opacity: 0.6;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

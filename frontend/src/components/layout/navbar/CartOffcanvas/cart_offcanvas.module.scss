@@ -1,0 +1,179 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  bottom: 0;
+  width: 400px;
+  background: $bg-primary;
+  color: $text-primary;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: right 0.4s ease;
+  pointer-events: none;
+
+  &.open {
+    right: 0;
+    pointer-events: auto;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .sidebarContent {
+    position: relative;
+    padding: 2rem;
+    max-height: 100vh;
+    overflow-y: auto;
+    z-index: 2;
+  }
+
+  .closeBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    color: $text-secondary;
+    cursor: pointer;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  .cartItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 1px solid $bg-primary;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+
+    img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: $radius-sm;
+    }
+
+    .itemDetails {
+      flex: 1;
+      h3 {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 0.9rem;
+        color: $text-muted;
+        margin-bottom: 0.5rem;
+      }
+
+      .quantityControls {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+
+        button {
+          background: transparent;
+          border: 1px solid $bg-primary;
+          color: $text-secondary;
+          padding: 0.2rem 0.8rem;
+          border-radius: 4px;
+          cursor: pointer;
+
+          &:hover {
+            color: $accent-yellow;
+            border-color: $accent-yellow;
+          }
+        }
+      }
+
+      .removeItem {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: $button-red;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .summary {
+    border-top: 1px dashed $bg-primary;
+    padding-top: 1rem;
+    position: sticky;
+    bottom: 0;
+    background: $bg-primary;
+    z-index: 100;
+  }
+
+  .subtotal {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: $text-secondary;
+  }
+
+  .checkoutBtn {
+    width: 100%;
+    padding: 0.75rem;
+    background: $button-red;
+    color: white;
+    border: none;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    @include hover-lift;
+
+    &:hover {
+      background: #ff4b37;
+    }
+  }
+
+  .emptyState {
+    text-align: center;
+    padding: 4rem 1rem;
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    button {
+      background: $accent-yellow;
+      color: black;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      @include hover-lift;
+
+      &:hover {
+        background: #d4d4d4;
+      }
+    }
+  }
+}

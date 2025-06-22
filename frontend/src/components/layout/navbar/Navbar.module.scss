@@ -1,0 +1,201 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.navbar {
+  font-family: $font-mono;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  background-color: $bg-primary;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: background-color, box-shadow;
+
+  &.scrolled {
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    color: $text-primary;
+    cursor: pointer;
+    @include transition(transform 0.2s ease);
+    will-change: transform, color;
+    img {
+      margin-left: 5px;
+      height: 45px;
+    }
+    @media (max-width: $mobile) {
+      justify-content: end;
+    }
+  }
+
+  .desktopNav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin-right: calc(1.5rem + 32px);
+
+    a,
+    .navIcon {
+      color: $text-secondary;
+      text-decoration: none;
+      font-size: 1rem;
+      position: relative;
+      @include transition("color 0.3s ease, transform 0.2s ease");
+      will-change: color, transform;
+
+      &:hover {
+        color: $accent-yellow;
+        transform: translateY(-2px);
+
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -4px;
+        width: 0%;
+        height: 1px;
+        background: $accent-yellow;
+        transition: width 0.3s ease;
+      }
+    }
+
+    .navIcon {
+      font-size: 1.5rem;
+      color: $text-primary;
+    }
+  }
+
+  .menuToggle {
+    display: none;
+    font-size: 1.5rem;
+    color: $text-secondary;
+    cursor: pointer;
+  }
+
+  .cartIcon {
+    position: absolute;
+    font-size: 1.5rem;
+    color: $text-primary;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 24px;
+    @include transition("color 0.3s ease, transform 0.2s ease");
+    will-change: color, transform;
+
+    &:hover {
+      color: $accent-yellow;
+      transform: translateY(calc(0 - (5px + 50%)));
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 1px;
+      background: $accent-yellow;
+      transition: width 0.3s ease;
+    }
+  }
+
+  .cartBadge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: $button-red;
+    color: black;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    text-align: center;
+    line-height: 18px;
+    font-weight: bold;
+  }
+
+  // Tablet
+  @media (max-width: $tablet) {
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .desktopNav {
+      display: none;
+    }
+
+    .menuToggle {
+      display: block;
+      left: 24px;
+    }
+
+    .cartIcon {
+      display: block;
+      right: 24px;
+    }
+  }
+
+  // Desktop
+  @media (min-width: $breakpoint-md) {
+    .logo {
+      margin-right: auto;
+    }
+
+    .desktopNav {
+      display: flex;
+      margin-left: auto;
+    }
+
+    .cartIcon {
+      margin-left: 1rem;
+      right: auto;
+      top: auto;
+      transform: none;
+    }
+
+    .menuToggle {
+      display: none;
+    }
+  }
+
+  // Mobile only
+  @media (max-width: $mobile) {
+    backdrop-filter: none;
+
+    .logo {
+      right: 24px;
+      transform: translateX(0);
+    }
+    .cartIcon {
+      display: none;
+      margin-left: 1rem;
+      right: auto;
+      top: auto;
+      transform: none;
+    }
+  }
+}

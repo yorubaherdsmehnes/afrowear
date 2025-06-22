@@ -1,0 +1,26 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.home {
+  font-family: $font-sans;
+  background-color: $bg-primary;
+  color: $text-primary;
+  line-height: 1.6;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional: Add placeholder height to prevent layout shift */
+.suspense-placeholder {
+  min-height: 300px;
+  background: $bg-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.5;
+}

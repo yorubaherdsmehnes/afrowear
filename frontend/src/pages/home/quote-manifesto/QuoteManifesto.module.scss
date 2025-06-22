@@ -1,0 +1,23 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.quote_manifesto {
+    padding: 3rem 2rem;
+  h1 {
+    font-family: $font-sans;
+    margin: 10px 0;
+    font-weight: 100;
+    font-size: 2.8rem;
+    text-align: center;
+    font-style: italic;
+  }
+  p {
+    text-transform: uppercase;
+    color: $icon-tint;
+    text-align: center;
+    font-style: italic;
+    font-size: 1rem;
+    font-family: $font-mono;
+    margin: 10px 0;
+  }
+}

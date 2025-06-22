@@ -1,0 +1,85 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/glitch";
+
+.loaderContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $bg-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  flex-direction: column;
+  text-align: center;
+  transition: opacity 0.5s ease-out;
+}
+
+.fadeOut {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.graffitiWrapper {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+.grafittiText {
+  font-family: $font-graffitti;
+}
+
+.loadingText {
+  font-size: 1rem;
+  color: $text-muted;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin: 1rem 0;
+}
+
+.progressBar {
+  width: 80%;
+  max-width: 300px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress {
+  display: block;
+  height: 100%;
+  background: $accent-yellow;
+  width: 0%;
+  transition: width 0.2s linear;
+}
+
+.glitchWrapper {
+  position: relative;
+  top: -10%;
+  display: flex;
+  justify-content: center;
+  font-size: clamp(4rem, 8vw, 6rem);
+  font-weight: bold;
+  color: white;
+}
+
+.glitchText {
+  position: absolute;
+  mix-blend-mode: screen;
+  &:hover {
+    animation: glitch-hover 1s infinite alternate;
+  }
+}
+
+.glitchText_red {
+  color: red;
+  animation: glitch 2s infinite alternate;
+}
+
+.glitchText_blue {
+  color: blue;
+  animation: glitch 1.5s infinite alternate;
+}

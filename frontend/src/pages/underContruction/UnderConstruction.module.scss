@@ -1,0 +1,93 @@
+@import "../../styles/variables";
+@import "../../styles/glitch";
+
+
+.construction {
+  background-color: $bg-primary;
+  color: $text-primary;
+}
+
+.content {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.container{
+  margin-bottom: calc(10% + 20px);
+  position: relative;
+  top: -100%;
+}
+
+.subtitle {
+  height: 100%;
+  font-size: 1.8rem;
+  text-align: center;
+  color: $text-muted;
+  max-width: 500px;
+}
+
+.typewriter {
+  font-family: $font-sans;
+  font-size: 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid $accent-yellow;
+  color: $text-primary;
+  animation: typing 3s steps(30, end), blink-caret 1s infinite;
+  max-width: 100%;
+}
+
+
+.graffitiWrapper {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+.grafittiText {
+  font-family: $font-graffitti;
+  line-height: 70%;
+}
+
+.glitchWrapper {
+  position: relative;
+  top: -100%;
+  display: flex;
+  justify-content: center;
+  font-size: clamp(5rem, 10vw, 8rem);
+  font-weight: bold;
+  color: white;
+}
+
+.glitchText {
+  position: absolute;
+  mix-blend-mode: screen;
+  &:hover {
+    animation: glitch-hover 1s infinite alternate;
+  }
+}
+
+.glitchText_red {
+  color: red;
+  animation: glitch 2s infinite alternate;
+}
+
+.glitchText_blue {
+  color: blue;
+  animation: glitch 1.5s infinite alternate;
+}
+
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: $accent-yellow }
+}

@@ -1,0 +1,42 @@
+.mediaLoader {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  background: #1a1a1a; /* Match your background */
+  overflow: hidden;
+}
+
+.shimmer {
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.05) 50%
+  );
+  animation: shimmer 1.5s infinite;
+  transform: skewX(-20deg);
+}
+
+@keyframes shimmer {
+  0% { left: -75%; }
+  100% { left: 125%; }
+}
+
+.glitch {
+  animation: glitch 1.5s infinite;
+  opacity: 0.2;
+}
+
+@keyframes glitch {
+  0%   { transform: translate(0); opacity: 0.2; }
+  25%  { transform: translate(-1px, 1px); opacity: 0.4; }
+  50%  { transform: translate(1px, -1px); opacity: 0.6; }
+  75%  { transform: translate(-1px, 1px); opacity: 0.4; }
+  100% { transform: translate(0); opacity: 0.2; }
+}

@@ -1,0 +1,38 @@
+// Base colors
+$bg-primary: #1A1A1A;
+$bg-secondary: #222222;
+$bg-accent: #0E0E0E;
+$text-primary: #F9F9F9;
+$text-secondary: #C2C2C2;
+$text-muted: #9A9A9A;
+$accent-yellow: #E5FF00;
+$button-red: #FF3B3B;
+$hover-gold: #FFB200;
+$icon-tint: #808080;
+$overlay-black: rgba(0, 0, 0, 0.7);
+
+// Fonts
+$font-sans: 'Space Grotesk', sans-serif;
+$font-mono: 'IBM Plex Mono', monospace;
+$font-graffitti: 'A Dripping Marker', cursive;
+
+// Transitions
+$transition-base: all 0.3s ease;
+$transition-hover: transform 0.2s ease, background-color 0.3s ease;
+
+// Radius
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+
+// Responsive breakpoints
+$mobile: 590px;
+$tablet: 860px;
+$desktop: 1024px;
+$laptop: 1440px;
+
+
+$breakpoint-xl: #{$laptop + 1}px;
+$breakpoint-lg: #{$desktop + 1}px;
+$breakpoint-md: #{$tablet + 1}px;
+$breakpoint-sm: #{$mobile + 1}px;

@@ -1,0 +1,112 @@
+@mixin glitch-animation(
+  $duration: 1.5s,
+  $intensity: 2px,
+  $opacity-min: 0.4,
+  $color-shadow: rgba(229, 255, 0, 0.3)
+) {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  text-shadow: 0 0 5px $color-shadow;
+  animation: glitch $duration infinite;
+
+  // Optional hover intensity
+  &:hover {
+    animation: glitch-hover $duration infinite;
+  }
+
+  @keyframes glitch {
+    0% {
+      transform: translate(0);
+      opacity: 1;
+    }
+    25% {
+      transform: translate(-$intensity, $intensity);
+      opacity: $opacity-min + 0.2;
+    }
+    50% {
+      transform: translate($intensity, -$intensity);
+      opacity: $opacity-min;
+    }
+    75% {
+      transform: translate(-$intensity / 2, $intensity / 2);
+      opacity: $opacity-min + 0.1;
+    }
+    100% {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes glitch-hover {
+    0% {
+      transform: translate(0);
+      opacity: 1;
+    }
+    20% {
+      transform: translate(-$intensity * 1.5, $intensity * 1.5);
+      opacity: $opacity-min;
+    }
+    40% {
+      transform: translate($intensity * 1.5, -$intensity * 1.5);
+      opacity: $opacity-min - 0.1;
+    }
+    60% {
+      transform: translate(-$intensity, $intensity);
+      opacity: $opacity-min + 0.1;
+    }
+    80% {
+      transform: translate($intensity, -$intensity);
+      opacity: $opacity-min;
+    }
+    100% {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
+
+
+}
+
+@mixin light-glitch-animation(
+  $duration: 1.5s,
+  $intensity: 2px,
+  $opacity-min: 0.4,
+  $color-shadow: rgba(229, 255, 0, 0.3)
+) {
+  color: inherit;
+  animation: glitch $duration infinite;
+
+
+@keyframes glitch {
+    0% {
+      transform: translate(0);
+      opacity: 1;
+    }
+    25% {
+      transform: translate(-2px, 2px);
+      opacity: 0.8;
+    }
+    50% {
+      transform: translate(2px, -2px);
+      opacity: 0.6;
+    }
+    75% {
+      transform: translate(-1px, 1px);
+      opacity: 0.4;
+    }
+    100% {
+      transform: translate(0);
+      opacity: 1;
+    }
+  }
+
+
+}
+
+.lightGlitchText{
+  @include light-glitch-animation();
+}
+.glitchText {
+  @include glitch-animation();
+}

@@ -1,0 +1,121 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.hero {
+  width: 100%;
+  height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  padding: 1rem;
+}
+
+.typewriter {
+  font-family: $font-graffitti;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 2.7rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.typewriter::after {
+  color: $accent-yellow;
+  content: '|';
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 3.2s;
+  opacity: 0;
+}
+
+.heroButtons {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.heroButtons button {
+  margin: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 1px solid $accent-yellow;
+  background: transparent;
+  color: $accent-yellow;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.heroButtons button:hover {
+  background: $accent-yellow;
+  color: black;
+}
+
+.scrollIndicator {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  opacity: 0.6;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

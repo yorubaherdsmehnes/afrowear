@@ -1,0 +1,147 @@
+@import "../../../styles/variables";
+@import "../../../styles/_mixins";
+
+.footer {
+  background-color: $bg-primary;
+  padding: 4rem 2rem 2rem;
+  border-top: 1px solid $bg-primary;
+
+  .footerContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: $text-primary;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    li {
+      margin-bottom: 0.75rem;
+      a {
+        color: $text-secondary;
+        text-decoration: none;
+        @include transition(color 0.3s ease);
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -4px;
+          width: 0%;
+          height: 1px;
+          background: $accent-yellow;
+          transition: width 0.3s ease;
+        }
+
+        &:hover {
+          color: $accent-yellow;
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: $text-muted;
+    line-height: 1.6;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .newsletter {
+    input {
+      width: 90%;
+      padding: 0.75rem;
+      background: $bg-accent;
+      border: 1px solid $accent-yellow;
+      color: $text-primary;
+      border-radius: 4px;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      width: 90%;
+      padding: 0.75rem;
+      background: $accent-yellow;
+      color: black;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+      @include transition(background 0.3s ease);
+
+      &:hover {
+        background: #d4d4d4;
+      }
+    }
+
+    small {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: $text-muted;
+    }
+  }
+
+  .utilityBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid $bg-primary;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+    color: $text-muted;
+  }
+
+  .socialIcons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    a {
+      color: $icon-tint;
+      font-size: 1.1rem;
+      @include transition(color 0.3s ease);
+
+      &:hover {
+        color: $accent-yellow;
+      }
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footerContainer {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .utilityBar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+}

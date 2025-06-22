@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.drop {
+  font-family: $font-sans;
+  background-color: $bg-primary;
+  color: $text-primary;
+  line-height: 1.6;
+}

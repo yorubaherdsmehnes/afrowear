@@ -1,0 +1,179 @@
+@import "../../../../styles/variables";
+@import "../../../../styles/mixins";
+
+.card {
+  background-color: $bg-secondary;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: 0 0 12px #e5ff0041;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px #e5ff0065;
+  }
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.imageWrapper:hover img {
+  transform: scale(1.05);
+}
+
+.badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: linear-gradient(to right, $accent-yellow, transparent);
+  color: $bg-primary;
+  padding: 0.3rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 8px;
+}
+
+.details {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.productName {
+  color: $text-primary;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.countdown {
+  color: $accent-yellow;
+  font-family: "Roboto Mono", monospace;
+  font-size: 0.9rem;
+}
+
+.ctaButton {
+  width: 100%;
+  border: 1px solid $accent-yellow;
+  background-color: transparent;
+  color: $accent-yellow;
+  padding: 0.75rem;
+  font-weight: 700;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: $accent-yellow;
+    color: $bg-primary;
+  }
+}
+
+.countdown,
+.ctaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    padding-right: 1rem;
+  }
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+
+  input,
+  select {
+    background-color: transparent;
+    color: $accent-yellow;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    font-size: 1rem;
+    border: 2px solid $accent-yellow;
+    border-radius: $radius-sm;
+    &:active,
+    &::after {
+    border: 2px solid $accent-yellow;
+    }
+  }
+
+  option{
+    background-color: $accent-yellow;
+    color: $bg-primary;
+  }
+
+  button {
+    background-color: $accent-yellow;
+    border-radius: 50px;
+    color: $bg-primary;
+    border: none;
+    padding: 0.75rem;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modalContent {
+  border: 30px;
+  padding: 1rem;
+  overflow: auto;
+  display: inline-block;
+  text-align: center;
+}
+
+.modalInner {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  max-width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+.modalInner img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+}
+
+.modalInner img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: auto;
+  object-fit: contain;
+}
