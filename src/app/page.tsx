@@ -2,32 +2,21 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { supabase } from '@/lib/supabaseClient'; // <-- Supabase imported here
+import { supabase } from '@/lib/supabaseClient';
+import Link from 'next/link'; 
 
 const heroImages = [
   '/hero-cover-1.png',
   '/3.png',
-  '/5.png',
-  '/6.png',
-  '/20.png',
+  '/8.png',
+  '/11 (1).png',
+  '/14.png',
 ];
 
-// --- HELPER COMPONENTS FOR PADDED SCROLLING BORDERS --- //
-const HorizontalMarquee = ({ reverse }: { reverse?: boolean }) => (
-  <div 
-    className="flex h-full w-max gap-8"
-    style={{ animation: `slideHorizontal 40s linear infinite ${reverse ? 'reverse' : 'normal'}` }}
-  >
-    {[...Array(20)].map((_, i) => (
-      <img src="/arstkrt pattern.png" alt="pattern" key={i} className="h-full w-auto object-contain shrink-0 opacity-80" />
-    ))}
-  </div>
-);
-
+// --- HELPER COMPONENT FOR PADDED SCROLLING BORDERS --- //
 const VerticalMarquee = ({ reverse }: { reverse?: boolean }) => (
   <div 
     className="flex flex-col w-full h-max gap-8"
-    // CHANGED: 40s is now 100s for a much slower, luxurious crawl
     style={{ animation: `slideVertical 100s linear infinite ${reverse ? 'reverse' : 'normal'}` }}
   >
     {[...Array(20)].map((_, i) => (
@@ -35,13 +24,12 @@ const VerticalMarquee = ({ reverse }: { reverse?: boolean }) => (
     ))}
   </div>
 );
-
 // -------------------------------------------------------- //
 
 export default function Home() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [message, setMessage] = useState(''); // <-- Added state for feedback messages
+  const [message, setMessage] = useState('');
   const [currentHeroImageIndex, setCurrentHeroImageIndex] = useState(0);
 
   useEffect(() => {
@@ -62,9 +50,7 @@ export default function Home() {
       .insert([{ email }]);
 
     if (error) {
-      // ADD THIS LINE RIGHT HERE:
       console.log("SUPABASE REJECTION REASON:", error); 
-      
       setStatus('error');
       setMessage(error.code === '23505' ? 'Email already on the invite list.' : 'Something went wrong. Try again.');
     } else {
@@ -74,15 +60,11 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FDFBF7] text-neutral-950 selection:bg-[#cba258] selection:text-white relative overflow-hidden flex flex-col py-10 px-12 md:px-16">
+    <main className="min-h-screen lg:h-screen lg:overflow-hidden bg-[#FDFBF7] text-neutral-950 selection:bg-[#cba258] selection:text-white relative flex flex-col py-8 px-8 md:px-16 pb-20">
       
       {/* GLOBAL CSS KEYFRAMES */}
       <style dangerouslySetInnerHTML={{
         __html: `
-          @keyframes slideHorizontal {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
           @keyframes slideVertical {
             0% { transform: translateY(0); }
             100% { transform: translateY(-50%); }
@@ -90,13 +72,7 @@ export default function Home() {
         `
       }} />
 
-      {/* --- THE 4-SIDED SEAMLESS SCROLLING FRAME --- */}
-      <div className="fixed top-0 left-0 w-full h-5 z-50 overflow-hidden bg-[#FDFBF7] pointer-events-none flex items-center">
-        <HorizontalMarquee />
-      </div>
-      <div className="fixed bottom-0 left-0 w-full h-5 z-50 overflow-hidden bg-[#FDFBF7] pointer-events-none flex items-center">
-        <HorizontalMarquee reverse />
-      </div>
+      {/* --- THE 2-SIDED SEAMLESS SCROLLING FRAME --- */}
       <div className="fixed top-0 left-0 w-5 h-full z-50 overflow-hidden bg-[#FDFBF7] pointer-events-none flex justify-center">
         <VerticalMarquee />
       </div>
@@ -105,14 +81,16 @@ export default function Home() {
       </div>
 
       {/* --- MAIN CONTENT --- */}
-      <nav className="relative z-30 flex justify-between items-center pb-6 md:pb-8">
+      <nav className="relative z-30 flex-shrink-0 flex justify-between items-center pb-6 md:pb-8 max-w-[1600px] mx-auto w-full">
         <div className="flex items-center gap-4">
-          <div className="w-10 h-10 relative invert">
-            <Image src="/aw-logo.png" alt="AW Logo" fill className="object-contain" />
+          <div className="w-10 h-10 relative">
+            <Image src="/aw-logo.png" alt="AW Logo" fill sizes="40px" className="object-contain" />
           </div>
-          <span className="font-bold tracking-tighter text-lg uppercase hidden sm:block">
-            afrowear.com.ng
-          </span>
+          <Link href="https://afrowear.world" target="_blank" rel="noopener noreferrer">
+          <h2 className="font-bold tracking-tighter text-3xl uppercase hidden sm:block">
+            afrowear.world
+          </h2>
+          </Link>
         </div>
         
         <div className="text-xs uppercase tracking-[0.2em] font-semibold flex gap-2 items-center border border-neutral-950 px-4 py-2 rounded-full">
@@ -121,22 +99,22 @@ export default function Home() {
         </div>
       </nav>
 
-      <div className="relative z-10 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-10 items-center max-w-[1600px] mx-auto w-full pb-6">
+      {/* Changed to gap-12 on mobile so the top and bottom have clean breathing room */}
+      <div className="relative z-10 flex-1 min-h-0 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center max-w-[1600px] mx-auto w-full pb-12 lg:pb-4 justify-between">
         
-        <div className="lg:col-span-5 flex flex-col justify-center pt-4 lg:pt-0 z-20 max-w-xl">
-          <p className="text-[#cba258] font-bold tracking-[0.3em] uppercase mb-6 text-sm">
-            Earn the Fit. (No be for everybody!)
+        {/* Changed h-[20vh] to h-auto so it naturally wraps the content on mobile */}
+        <div className="lg:col-span-5 flex flex-col justify-start z-20 max-w-xl h-auto lg:h-full lg:py-10 mt-4 lg:mt-0">
+          <p className="text-[#cba258] font-bold tracking-[0.3em] uppercase mb-4 lg:mb-6 text-sm">
+            Presents
           </p>
           
-          <h1 className="font-serif text-6xl md:text-8xl xl:text-9xl text-neutral-950 tracking-tighter leading-[0.85] mb-8 uppercase relative">
-            Afro<br />
-            <span className="italic font-light pr-8">Wear</span>
-            <span className="absolute -bottom-6 left-1 text-xs md:text-sm font-sans tracking-[0.2em] font-bold">.com.ng</span>
-          </h1>
-          
-          <p className="text-base md:text-lg text-neutral-600 font-light leading-relaxed mb-10">
-            Where streets speak royalty. A curated digital and print archive deconstructing contemporary Nigerian fashion.
-          </p>
+          <div className="mb-8 lg:mb-6 lg:pb-16">
+            <Link href="https://arstkrt.com" target="_blank" rel="noopener noreferrer">
+            <h1 className="font-bankgothic font-black text-6xl md:text-8xl xl:text-[9rem] text-neutral-950 tracking-tighter leading-[0.85] uppercase block">
+              ARSTKRT
+            </h1>
+            </Link>
+          </div>
 
           <div className="w-full">
             <form onSubmit={handleRequestInvite} className="flex flex-col gap-4">
@@ -168,22 +146,28 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 relative h-[75vh] lg:h-[85vh] mt-10 lg:mt-0 flex justify-end items-center bg-neutral-200">
-          <div className="relative w-full h-full">
-            <Image 
-              src={heroImages[currentHeroImageIndex]} 
-              alt="Afrowear Editorial" 
-              fill 
-              className="object-cover object-top shadow-2xl transition-opacity duration-1000 ease-in-out" 
-              priority
-            />
-            <div className="absolute -inset-4 border border-neutral-200 pointer-events-none hidden lg:block"></div>
+        {/* PHOTOGRAPH SHAPED IMAGE CONTAINER */}
+        <div className="lg:col-span-7 w-full h-auto lg:h-full flex justify-center lg:justify-end items-center mb-10 lg:mb-0">
+          {/* Added 'relative' back to the wrappers */}
+          <div className="relative w-full max-w-sm md:max-w-lg lg:max-w-xl xl:max-w-2xl aspect-[4/5] bg-white p-3 md:p-5 shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500 ease-out">
+            {/* Added 'overflow-hidden' and 'relative' to contain your scaled up image */}
+            <div className="relative w-full h-full bg-neutral-200 overflow-hidden">
+              <Image 
+                src={heroImages[currentHeroImageIndex]} 
+                alt="Afrowear Editorial" 
+                fill 
+                sizes="(max-width: 768px) 130vw, (max-width: 1200px) 65vw, 50vw"
+                className="object-cover object-top h-[150%] w-[150%] transition-opacity duration-1000 ease-in-out" 
+                priority
+              />
+            </div>
           </div>
         </div>
 
       </div>
 
-      <div className="w-full h-8 overflow-hidden bg-[#FDFBF7] z-20 flex items-center mt-auto">
+      {/* FOOTER PINNED TO THE BOTTOM OF THE PAGE DOCUMENT */}
+      <div className="absolute bottom-0 p-4 left-0 w-full bg-[#FDFBF7] overflow-hidden z-20 flex items-center pointer-events-none">
         <div className="whitespace-nowrap animate-[pulse_4s_ease-in-out_infinite] text-neutral-400 text-[10px] tracking-[0.3em] uppercase font-bold text-center w-full">
           // afrowear.com.ng // Not 4 Sale // afrowear.com.ng // Earn The Fit //
         </div>
