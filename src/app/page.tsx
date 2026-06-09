@@ -26,7 +26,7 @@ const VerticalMarquee = ({ reverse }: { reverse?: boolean }) => (
         src="/arstkrt pattern_1.png"
         alt="pattern"
         key={i}
-        className="w-full h-auto object-contain shrink-0 opacity-80"
+        className="w-[30px] h-auto object-contain shrink-0 opacity-80"
       />
     ))}
   </div>
@@ -87,10 +87,10 @@ export default function Home() {
       />
 
       {/* --- THE 2-SIDED SEAMLESS SCROLLING FRAME --- */}
-      <div className="fixed top-0 left-0 w-5 h-full z-50 overflow-hidden bg-[#FDFBF7] pointer-events-none flex justify-center">
+      <div className="fixed top-0 left-0 w-8 h-full z-50 overflow-hidden bg-[#FDFBF7] pointer-events-none flex justify-center">
         <VerticalMarquee />
       </div>
-      <div className="fixed top-0 right-0 w-5 h-full z-50 overflow-hidden bg-[#FDFBF7] pointer-events-none flex justify-center">
+      <div className="fixed top-0 right-0 w-8 h-full z-50 overflow-hidden bg-[#FDFBF7] pointer-events-none flex justify-center">
         <VerticalMarquee reverse />
       </div>
 
